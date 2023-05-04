@@ -1,7 +1,7 @@
 from fastapi import FastAPI, status, Response
-from models.contatos import base, Contatos
-from models import engine, ContatosRepo
-from schemas.contato import ContatoRequest, ContatoResponse
+from .models.contatos import base, Contatos
+from .models import engine, ContatosRepo
+from .schemas.contato import ContatoRequest, ContatoResponse
 
 base.metadata.create_all(bind=engine)
 

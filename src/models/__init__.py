@@ -2,9 +2,19 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from .contatos import Contatos
 from typing import List
+from pathlib import Path
+from configparser import ConfigParser
 
 
-DATABASE_URL = 'sqlite:///db.sqlite3'
+cfg = ConfigParser()
+cfg.read(Path('config.ini'))
+
+username = cfg.get('DATABASE', 'username')
+password = cfg.get('DATABASE', 'password')
+dbip = cfg.get('DATABASE', 'dbip')
+dbname = cfg.get('DATABASE', 'dbname')
+
+DATABASE_URL = f'postgresql://{username}:{dbip}@{dbip}:5432/{dbname}'
 engine = create_engine(DATABASE_URL)
 
 

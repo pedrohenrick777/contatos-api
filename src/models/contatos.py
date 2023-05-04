@@ -7,7 +7,7 @@ base = declarative_base()
 class Contatos(base):
     __tablename__ = 'contatos'
 
-    id: int = Column(Integer, primary_key=True)
-    nome: str = Column(String)
-    telefone: str = Column(String)
-    email: str = Column(String)
+    id: Column[int] = Column(Integer, primary_key=True)
+    nome: Column[str] = Column(String)
+    telefone: Column[str] = Column(String)
+    email: Column[str] = Column(String)
